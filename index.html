@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Title</title>
+    <link rel="stylesheet" href="style-min.css">
+    <link rel="stylesheet" href="style-nav-min.css">
+    <link rel="stylesheet" href="style-nav-glov-min.css">
+    <link rel="stylesheet" href="slick/slick-theme.css">
+    <link rel="stylesheet" href="slick/slick.css">
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style_search.css">
+    <link rel="stylesheet" href="search.php">
+    <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js?ver=4.7.1'></script>
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.0.0/jquery-migrate.js?ver=4.7.1'></script>
+    <script type="text/javascript"  src="slick/slick.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function (){
+            $('.menu-triger-glov').click(function () {
+                $('.block-link-glov').slideToggle(500);
+            });
+            $(window).resize(function () {
+                if($(window).width()>500)
+                {
+                    $('.block-link-glov').removeAttr('style');
+                }
+            })
+        });
+    </script>
+    <script type="text/javascript">
+        $(function() {
+            $("#search").keyup(function(){
+                var search = $("#search").val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "search.php",
+                    data: {"search": search},
+                    cache: false,
+                    success: function(response){
+                        $("#resSearch").html(response);
+                    }
+                });
+                return false;
+            });
+        });
+        $(document).ready(function (){
+            $('.menu-triger').click(function () {
+                $('.block-link').slideToggle(500);
+            });
+            $(window).resize(function () {
+                if($(window).width()>500)
+                {
+                    $('.block-link').removeAttr('style');
+                }
+            })
+        });
+    </script>
+    <script type="text/javascript">
+        function a() {
+            document.querySelector('#resSearch').addEventListener('click', function(e){
+                var id = e.target.id;
+                //document.querySelector('#test strong').innerHTML = id;
+                var a = document.getElementById(id);
+                document.getElementById("search").value = a.getAttribute('value');
+                var elem=document.getElementById('resSearch');
+                elem.style.display = 'none';
+            });
+        }
+        function b() {
+            var elem=document.getElementById('resSearch');
+            elem.style.display = 'block';
+        }
+    </script>
+</head>
+<body>
+<script>
+    $(document).ready(function (){
+        $('.slider').slick();
+    });
+</script>
+<div class="top">
+    <div class="bloc">
+        <nav class="menu_glov">
+            <a href="#" class="menu-triger-glov fa fa-bars"></a>
+            <ul class="block-link-glov">
+                <li class="block-links-glov"><a href="#" class="nav-link-glov">Начало</a></li>
+                <li class="block-links-glov"><a href="#" class="nav-link-glov">Контакты</a></li>
+                <li class="block-links-glov"><a href="#" class="nav-link-glov">Статьи </a></li>
+                <li class="block-links-glov"><a href="#" class="nav-link-glov">О компании</a></li>
+                <li class="block-links-glov"><a href="#" class="nav-link-glov">Новости</a></li>
+                <li class="block-links-glov"><a href="#" class="nav-link-glov">Доставка и Оплата</a></li>
+                <li class="block-links-glov"><a href="#" class="nav-link-glov">Гарантии</a></li>
+            </ul>
+        </nav>
+        <div class="right_h_b">
+            <a href=""><img src="img/eng.png" alt=""></a>
+            <a href=""><img src="img/rus.png" alt=""></a>
+            <a href="" class="inpu"><img src="img/in.png" alt="">Вход</a>
+            <a href="" class="register"><img src="img/user.png" alt="">Регистрация</a>
+        </div>
+    </div>
+</div>
+<div class="midle">
+    <div class="bloc">
+        <div class="logo">
+            <img src="img/logo.png" alt="">
+        </div>
+        <div class="center_block">
+            <div class="first_center_block">
+                <a href="">Не дозвонились?</a>
+            </div>
+            <div class="second_center_block">
+                <div class="txt_left_a">
+                    <a href="" >
+                        <img src="img/mts.png" alt="">
+                        (050)
+                        <span>757-75 77</span>
+                    </a>
+                </div>
+                <div class="txt_right_a">
+                    <a href="">
+                        <img src="img/kstar.png" alt="">
+                        (067)
+                        <span>757-75-77</span>
+                    </a>
+                </div>
+            </div>
+            <div class="search_block">
+                <form action="search.php" method="post" name="form" onsubmit="return false;">
+                        <input name="search" type="text" id="search" onclick="b()">
+                        <input type="submit" value="">
+                </form>
+                <div id="resSearch"></div>
+            </div>
+        </div>
+        <div class="thirt_center_block">
+            <div class="first_thirt_block">
+                <img src="img/cart.png" alt="">
+            </div>
+            <div class="second_thirt_block">
+                <h4>Корзина</h4>
+                <p>Товаров:<span> 5</span></p>
+                <p>На сумму:<span> 5000 грн</span></p>
+            </div>
+        </div>
+        <nav class="menu">
+            <a class="menu-triger fa fa-th-list"></a>
+            <ul class="block-link">
+                <li class="block-links"><a href="#" class="nav-link first-link">ЖЕНСКАЯ ОДЕЖДА</a></li>
+                <li class="block-links"><a href="#" class="nav-link">МУЖСКАЯ ОДЕЖДА</a></li>
+                <li class="block-links"><a href="#" class="nav-link">ДЕТСКАЯ ОДЕЖДА</a></li>
+                <li class="block-links"><a href="#" class="nav-link">ПОДАРОЧНАЯ КАРТА</a></li>
+                <li class="block-links"><a href="#" class="nav-link">БРЕНДЫ</a></li>
+                <li class="block-links"><a href="#" class="nav-link">НОВИНКИ</a></li>
+                <li class="block-links"><a href="#" class="nav-link last-link">РАСПРОДАЖА</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<div class="bottom">
+    <div class="bloc">
+        <div class="slider">
+            <img src="img/slide_1.png" alt="">
+            <img src="img/slide_2.png" alt="">
+        </div>
+    </div>
+</div>
+</body>
+</html>
